@@ -1,3 +1,3 @@
 export default function Home() {
-  return <h1>Vai estudar Rayssa 💪 (•︡益︠•) 👊</h1>;
+  return <h1>Mãe, te amo</h1>;
 }
