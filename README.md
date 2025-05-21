@@ -1,3 +1,3 @@
 # tabnews
 
-Projeto de estudo - Iniciando
+Projeto de estudo
