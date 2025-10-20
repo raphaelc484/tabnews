@@ -73,6 +73,10 @@ async function getLastEmail() {
 
   const lastEmailItem = emailListBody.pop();
 
+  if (!lastEmailItem) {
+    return null;
+  }
+
   /**
    * Caso precise pegar corpo em html, trocar .plain por .html
    */
