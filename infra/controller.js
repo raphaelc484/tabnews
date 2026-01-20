@@ -1,5 +1,6 @@
 import * as cookie from "cookie";
 import session from "models/session.js";
+import authorization from "models/authorization.js";
 
 import {
   InternalServerError,
@@ -63,7 +64,7 @@ async function clearSessionCookie(response) {
 
 async function injectAnonymaousOrUser(request, response, next) {
   //1. se o cookie `session_id` existe, injetar usuário
-  if (request.cookies?.session_Id) {
+  if (request.cookies?.session_id) {
     await injectAuthenticatedUser(request);
     return next();
   }
@@ -100,7 +101,7 @@ function canRequest(feature) {
   return function canRequestMiddleware(request, response, next) {
     const userTryingToRequest = request.context.user;
 
-    if (userTryingToRequest.features.includes(feature)) {
+    if (authorization.can(userTryingToRequest, feature)) {
       return next();
     }
 
