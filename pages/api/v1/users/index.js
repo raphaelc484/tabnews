@@ -3,9 +3,10 @@ import controller from "infra/controller";
 import user from "models/user.js";
 import activation from "models/activation.js";
 
-const router = createRouter(controller.errorHandler);
+const router = createRouter(controller.errorHandlers);
 
-router.post(postHandler);
+router.use(controller.injectAnonymaousOrUser);
+router.post(controller.canRequest("create:user"), postHandler);
 
 export default router.handler(controller.errorHandlers);
 
