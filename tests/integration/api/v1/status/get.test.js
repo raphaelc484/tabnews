@@ -49,7 +49,7 @@ describe("GET /api/v1/status", () => {
     test("Retrieving current system status", async () => {
       const createdUser = await orchestrator.createUser();
       const activatedUser = await orchestrator.activateUser(createdUser);
-      await orchestrator.addFeaturesToUser(createdUser, ["read:status"]);
+      await orchestrator.addFeaturesToUser(createdUser, ["read:status:all"]);
       const sessionObject = await orchestrator.createSession(activatedUser.id);
 
       const response = await fetch("http://localhost:3000/api/v1/status", {
