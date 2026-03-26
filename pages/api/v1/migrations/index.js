@@ -5,9 +5,12 @@ import authorization from "models/authorization";
 
 const router = createRouter(controller.errorHandler);
 
-router.use(controller.injectAnonymaousOrUser);
-router.get(controller.canRequest("read:migration"), getHandler);
-router.post(controller.canRequest("create:migration"), postHandler);
+// router.use(controller.injectAnonymaousOrUser);
+// router.get(controller.canRequest("read:migration"), getHandler);
+// router.post(controller.canRequest("create:migration"), postHandler);
+
+router.get(getHandler);
+router.post(postHandler);
 
 export default router.handler(controller.errorHandlers);
 
