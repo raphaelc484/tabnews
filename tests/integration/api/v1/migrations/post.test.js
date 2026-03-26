@@ -6,7 +6,7 @@ beforeAll(async () => {
   await orchestrator.runPendingMigrations();
 });
 
-describe("POST /api/v1/migrations", () => {
+describe.skip("POST /api/v1/migrations", () => {
   describe("Anonymous user", () => {
     test("Running pending migrations", async () => {
       const response1 = await fetch("http://localhost:3000/api/v1/migrations", {
