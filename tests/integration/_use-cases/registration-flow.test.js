@@ -11,7 +11,7 @@ beforeAll(async () => {
   await orchestrator.deleteAllEmails();
 });
 
-describe("Use case: Registration Flow (all successful)", () => {
+describe(`Use case: Registration Flow (all successful)`, () => {
   let createUserResponseBody;
   let activationTokenId;
   let createSessionsResponseBody;

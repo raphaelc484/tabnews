@@ -9,8 +9,8 @@ beforeAll(async () => {
   await orchestrator.runPendingMigrations();
 });
 
-describe("PATCH /api/v1/users/[username]", () => {
-  describe("Anonymous user", () => {
+describe(`PATCH /api/v1/users/[username]`, () => {
+  describe(`Anonymous user`, () => {
     test("With unique 'username'", async () => {
       const createdUser = await orchestrator.createUser();
 
@@ -40,7 +40,7 @@ describe("PATCH /api/v1/users/[username]", () => {
     });
   });
 
-  describe("Default user", () => {
+  describe(`Default user`, () => {
     test("With nonexistent 'username'", async () => {
       const createdUser = await orchestrator.createUser();
       const activatedUser = await orchestrator.activateUser(createdUser);
@@ -316,7 +316,7 @@ describe("PATCH /api/v1/users/[username]", () => {
     });
   });
 
-  describe("Privileged user", () => {
+  describe(`Privileged user`, () => {
     test("With `update:user:others` targeting `defaultUser`", async () => {
       const privilegedUser = await orchestrator.createUser();
       const activatedPrivilegedUser =

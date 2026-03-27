@@ -9,8 +9,8 @@ beforeAll(async () => {
   await orchestrator.runPendingMigrations();
 });
 
-describe("DELETE /api/v1/sessions", () => {
-  describe("Default user", () => {
+describe(`DELETE /api/v1/sessions`, () => {
+  describe(`Default user`, () => {
     test("With nonexitent session", async () => {
       const nonexitentToken =
         "5efda34a70fbf46ce72afdeed6975372e96755c83fe4aadcd091a8256fe8a248647ea4f4146095403b8072496d2fa070";
