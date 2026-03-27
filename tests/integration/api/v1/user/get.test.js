@@ -9,8 +9,8 @@ beforeAll(async () => {
   await orchestrator.runPendingMigrations();
 });
 
-describe("GET /api/v1/user", () => {
-  describe("Anonymous user", () => {
+describe(`GET /api/v1/user`, () => {
+  describe(`Anonymous user`, () => {
     test("Retrieving the endpoint", async () => {
       const response = await fetch("http://localhost:3000/api/v1/user");
 
@@ -26,7 +26,7 @@ describe("GET /api/v1/user", () => {
       });
     });
   });
-  describe("Default user", () => {
+  describe(`Default user`, () => {
     test("With valid session", async () => {
       const createdUser = await orchestrator.createUser({
         username: "UserWithValidSession",

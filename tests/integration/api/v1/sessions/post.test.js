@@ -9,8 +9,8 @@ beforeAll(async () => {
   await orchestrator.runPendingMigrations();
 });
 
-describe("POST /api/v1/sessions", () => {
-  describe("Anonymous user", () => {
+describe(`POST /api/v1/sessions`, () => {
+  describe(`Anonymous user`, () => {
     test("With incorrect `email` and incorrect `password`", async () => {
       await orchestrator.createUser();
 

@@ -6,8 +6,8 @@ beforeAll(async () => {
   await orchestrator.runPendingMigrations();
 });
 
-describe("POST /api/v1/migrations", () => {
-  describe("Anonymous user", () => {
+describe(`POST /api/v1/migrations`, () => {
+  describe(`Anonymous user`, () => {
     test("Running pending migrations", async () => {
       const response1 = await fetch("http://localhost:3000/api/v1/migrations", {
         method: "POST",
@@ -27,7 +27,7 @@ describe("POST /api/v1/migrations", () => {
     });
   });
 
-  describe("Default user", () => {
+  describe(`Default user`, () => {
     test("Running pending migrations", async () => {
       const createdUser = await orchestrator.createUser();
       const activatedUser = await orchestrator.activateUser(createdUser);
@@ -59,7 +59,7 @@ describe("POST /api/v1/migrations", () => {
     });
   });
 
-  describe("Privileged user", () => {
+  describe(`Privileged user`, () => {
     test("With `create:migration`", async () => {
       const createdUser = await orchestrator.createUser();
       const activatedUser = await orchestrator.activateUser(createdUser);

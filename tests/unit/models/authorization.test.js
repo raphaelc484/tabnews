@@ -1,8 +1,8 @@
 import { InternalServerError } from "infra/errors";
 import authorization from "models/authorization.js";
 
-describe("models/authorization.js", () => {
-  describe(".cant()", () => {
+describe(`models/authorization.js`, () => {
+  describe(`.cant()`, () => {
     test("without `user`", () => {
       expect(() => {
         authorization.can();
@@ -38,7 +38,7 @@ describe("models/authorization.js", () => {
     });
   });
 
-  describe(".filterOutput()", () => {
+  describe(`.filterOutput()`, () => {
     test("without `user`", () => {
       expect(() => {
         authorization.filterOutput();

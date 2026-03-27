@@ -9,8 +9,8 @@ beforeAll(async () => {
   await orchestrator.runPendingMigrations();
 });
 
-describe("PATCH /api/v1/activations/[token_id]", () => {
-  describe("Anonymous user", () => {
+describe(`PATCH /api/v1/activations/[token_id]`, () => {
+  describe(`Anonymous user`, () => {
     test("With nonexistent token", async () => {
       const response = await fetch(
         "http://localhost:3000/api/v1/activations/8438c9eb-cfeb-4065-b734-0c2189bb865d",
@@ -169,7 +169,7 @@ describe("PATCH /api/v1/activations/[token_id]", () => {
     });
   });
 
-  describe("Default user", () => {
+  describe(`Default user`, () => {
     test("With valid token, but already logged in user", async () => {
       const user1 = await orchestrator.createUser();
       await orchestrator.activateUser(user1);
