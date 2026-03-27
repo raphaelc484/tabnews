@@ -17,8 +17,8 @@ export default router.handler(controller.errorHandlers);
 async function getHandler(request, response) {
   // const userTryingToGet = request.context.user;
 
-  const pendingMigrations = await migrator.listPendingMigrations();
-
+  // const pendingMigrations = await migrator.listPendingMigrations();
+  await migrator.listPendingMigrations();
   // const secureOutputValues = authorization.filterOutput(
   //   userTryingToGet,
   //   "read:migration",
