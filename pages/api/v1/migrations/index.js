@@ -1,13 +1,13 @@
 import { createRouter } from "next-connect";
 import controller from "infra/controller";
 import migrator from "models/migrator";
-// import authorization from "models/authorization";
+import authorization from "models/authorization";
 
 const router = createRouter(controller.errorHandler);
 
-// router.use(controller.injectAnonymaousOrUser);
-// router.get(controller.canRequest("read:migration"), getHandler);
-// router.post(controller.canRequest("create:migration"), postHandler);
+router.use(controller.injectAnonymaousOrUser);
+router.get(controller.canRequest("read:migration"), getHandler);
+router.post(controller.canRequest("create:migration"), postHandler);
 
 router.get(getHandler);
 router.post(postHandler);
@@ -15,36 +15,32 @@ router.post(postHandler);
 export default router.handler(controller.errorHandlers);
 
 async function getHandler(request, response) {
-  // const userTryingToGet = request.context.user;
+  const userTryingToGet = request.context.user;
 
-  // const pendingMigrations = await migrator.listPendingMigrations();
-  await migrator.listPendingMigrations();
-  // const secureOutputValues = authorization.filterOutput(
-  //   userTryingToGet,
-  //   "read:migration",
-  //   pendingMigrations,
-  // );
+  const pendingMigrations = await migrator.listPendingMigrations();
+  const secureOutputValues = authorization.filterOutput(
+    userTryingToGet,
+    "read:migration",
+    pendingMigrations,
+  );
 
-  // return response.status(200).json(secureOutputValues);
-  return response.status(200).send();
+  return response.status(200).json(secureOutputValues);
 }
 
 async function postHandler(request, response) {
-  // const userTryingToPost = request.context.user;
+  const userTryingToPost = request.context.user;
 
   const migratedMigrations = await migrator.runPendingMigrations();
 
-  // const secureOutputValues = authorization.filterOutput(
-  //   userTryingToPost,
-  //   "read:migration",
-  //   migratedMigrations,
-  // );
+  const secureOutputValues = authorization.filterOutput(
+    userTryingToPost,
+    "read:migration",
+    migratedMigrations,
+  );
 
   if (migratedMigrations.length > 0) {
-    // return response.status(201).json(secureOutputValues);
-    return response.status(201).send();
+    return response.status(201).json(secureOutputValues);
   }
 
-  // return response.status(200).json(secureOutputValues);
-  return response.status(200).send();
+  return response.status(200).json(secureOutputValues);
 }
